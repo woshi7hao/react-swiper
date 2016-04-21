@@ -13,7 +13,7 @@ http://liu-dongyu.github.io/react-swiper/
 #### Example
     import React, { Component } from 'react';
     import ReactDOM from 'react-dom';
-    import ReactSwiper from 'react.swiper';
+    import ReactSwiper from 'react-swiper-dy';
     
     class Page extends Component {
       constructor(props) {
