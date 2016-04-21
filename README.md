@@ -1,5 +1,9 @@
 > [nolimits4web](https://github.com/nolimits4web)'s [Swiper](https://github.com/nolimits4web/swiper/) as a react component
 
+### Install
+
+  npm install react.swiper --save
+
 ### Demo
 
 demo的源码在demo文件夹    
@@ -9,7 +13,7 @@ http://liu-dongyu.github.io/react-swiper/
 #### Example
     import React, { Component } from 'react';
     import ReactDOM from 'react-dom';
-    import ReactSwiper from 'react-swiper';
+    import ReactSwiper from 'react.swiper';
     
     class Page extends Component {
       constructor(props) {
