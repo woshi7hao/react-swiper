@@ -2,7 +2,7 @@
 
 ### Install
 
-  npm install react.swiper --save
+  npm install react-swiper-dy --save
 
 ### Demo
 
