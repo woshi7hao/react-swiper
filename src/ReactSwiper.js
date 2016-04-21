@@ -1,6 +1,5 @@
 import React from 'react';
-import 'swiper/dist/css/swiper.css';
-import Swiper from 'swiper/dist/js/swiper.js';
+import Swiper from 'swiper';
 
 function pagination(argPagination) {
   if (argPagination) {

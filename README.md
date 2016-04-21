@@ -13,6 +13,7 @@ http://liu-dongyu.github.io/react-swiper/
 #### Example
     import React, { Component } from 'react';
     import ReactDOM from 'react-dom';
+    import 'swiper/dist/css/swiper.css';
     import ReactSwiper from 'react-swiper-dy';
     
     class Page extends Component {
@@ -53,7 +54,22 @@ http://liu-dongyu.github.io/react-swiper/
       <Page />,
       document.getElementById('app')
     );
+
+### 注意
+
+需要自行引入swiper依赖的css文件    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.x.x/css/swiper.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.x.x/css/swiper.min.css">
+
+or
+
+    // es6
+    import 'swiper/dist/css/swiper.css';
     
+    //es5
+    require('swiper/dist/css/swiper.css')
+
 ### 说明
 
 swipeOptions可以传递[Swiper](https://github.com/nolimits4web/swiper/)的option

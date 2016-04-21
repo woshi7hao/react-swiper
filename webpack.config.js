@@ -33,8 +33,7 @@ const config = {
 
   externals: webpackUMDExternal({
     'react': 'React',
-    'swiper/dist/js/swiper.js': 'Swiper',
-    'swiper/dist/css/swiper.css': 'swiper/dist/css/swiper.css'
+    'swiper': 'Swiper',
   }),
 
   resolve: {

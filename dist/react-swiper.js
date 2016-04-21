@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("swiper/dist/css/swiper.css"), require("swiper/dist/js/swiper.js"));
+		module.exports = factory(require("react"), require("swiper"));
 	else if(typeof define === 'function' && define.amd)
-		define("ReactSwiper", ["react", "swiper/dist/css/swiper.css", "swiper/dist/js/swiper.js"], factory);
+		define("ReactSwiper", ["react", "swiper"], factory);
 	else if(typeof exports === 'object')
-		exports["ReactSwiper"] = factory(require("react"), require("swiper/dist/css/swiper.css"), require("swiper/dist/js/swiper.js"));
+		exports["ReactSwiper"] = factory(require("react"), require("swiper"));
 	else
-		root["ReactSwiper"] = factory(root["React"], root["swiper/dist/css/swiper.css"], root["Swiper"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__) {
+		root["ReactSwiper"] = factory(root["React"], root["Swiper"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -66,9 +66,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(2);
-
-	var _swiper = __webpack_require__(3);
+	var _swiper = __webpack_require__(2);
 
 	var _swiper2 = _interopRequireDefault(_swiper);
 
@@ -322,12 +320,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
-
-/***/ },
-/* 3 */
-/***/ function(module, exports) {
-
-	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 /***/ }
 /******/ ])

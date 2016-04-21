@@ -10,9 +10,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-require('swiper/dist/css/swiper.css');
-
-var _swiper = require('swiper/dist/js/swiper.js');
+var _swiper = require('swiper');
 
 var _swiper2 = _interopRequireDefault(_swiper);
 
