@@ -7,7 +7,7 @@
 ### Demo
 
 demo的源码在demo文件夹    
-http://liu-dongyu.github.io/react-swiper/
+[live demo](http://liu-dongyu.github.io/react-swiper/)
 
 ### Usage
 #### Example
