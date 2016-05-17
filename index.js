@@ -244,11 +244,13 @@ var ReactSwiper = function (_React$Component) {
   return ReactSwiper;
 }(_react2.default.Component);
 
-ReactSwiper.propTypes = {
-  children: _react2.default.PropTypes.any.isRequired,
-  swipeOptions: _react2.default.PropTypes.object,
-  style: _react2.default.PropTypes.object,
-  className: _react2.default.PropTypes.string
-};
+if (process.env.NODE_ENV !== 'production') {
+  ReactSwiper.propTypes = {
+    children: _react2.default.PropTypes.any.isRequired,
+    swipeOptions: _react2.default.PropTypes.object,
+    style: _react2.default.PropTypes.object,
+    className: _react2.default.PropTypes.string
+  };
+}
 
 exports.default = ReactSwiper;

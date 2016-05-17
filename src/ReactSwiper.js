@@ -135,11 +135,13 @@ class ReactSwiper extends React.Component {
   }
 }
 
-ReactSwiper.propTypes = {
-  children: React.PropTypes.any.isRequired,
-  swipeOptions: React.PropTypes.object,
-  style: React.PropTypes.object,
-  className: React.PropTypes.string,
-};
+if (process.env.NODE_ENV !== 'production') {
+  ReactSwiper.propTypes = {
+    children: React.PropTypes.any.isRequired,
+    swipeOptions: React.PropTypes.object,
+    style: React.PropTypes.object,
+    className: React.PropTypes.string,
+  };
+}
 
 export default ReactSwiper;
