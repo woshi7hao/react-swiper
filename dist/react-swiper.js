@@ -301,7 +301,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_react2.default.Component);
 
 	ReactSwiper.propTypes = {
-	  children: _react2.default.PropTypes.array,
+	  children: _react2.default.PropTypes.any.isRequired,
 	  swipeOptions: _react2.default.PropTypes.object,
 	  style: _react2.default.PropTypes.object,
 	  className: _react2.default.PropTypes.string
