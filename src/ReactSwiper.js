@@ -31,6 +31,26 @@ class ReactSwiper extends React.Component {
   componentDidMount() {
     const { swipeOptions } = this.props;
     this.swipe = new Swiper(this.refs.container, swipeOptions);
+    this.activeIndex = this.swipe.activeIndex;
+    this.previousIndex = this.swipe.previousIndex;
+    this.width = this.swipe.width;
+    this.height = this.swipe.height;
+    this.touches = this.swipe.touches;
+    this.params = this.swipe.params;
+    this.container = this.swipe.container;
+    this.wrapper = this.swipe.wrapper;
+    this.slides = this.swipe.slides;
+    this.bullets = this.swipe.bullets;
+    this.translate = this.swipe.translate;
+    this.progress = this.swipe.progress;
+    this.isBeginning = this.swipe.isBeginning;
+    this.isEnd = this.swipe.isEnd;
+    this.autoplaying = this.swipe.autoplaying;
+    this.animating = this.swipe.animating;
+    this.clickedIndex = this.swipe.clickedIndex;
+    this.clickedSlide = this.swipe.clickedSlide;
+    this.prevButton = this.swipe.prevButton;
+    this.nextButton = this.swipe.nextButton;
   }
   componentWillUnmount() {
     this.swipe.destroy(true, true);
@@ -119,13 +139,14 @@ class ReactSwiper extends React.Component {
     return (
       <div className={containerClassName} style={containerStyle} ref="container">
         <div className="swiper-wrapper">
-          {React.Children.map(children, child => {
-            const childClassName =
-              child.props.className ? `${child.props.className} swiper-slide` : ' swiper-slide';
-            const childStyle = child.props.style || {};
-            return React.cloneElement(child, { className: childClassName, style: childStyle });
+          {
+            React.Children.map(children, child => {
+              const childClassName =
+                child.props.className ? `${child.props.className} swiper-slide` : ' swiper-slide';
+              const childStyle = child.props.style || {};
+              return React.cloneElement(child, { className: childClassName, style: childStyle });
+            })
           }
-          )}
         </div>
         {pagination(swipeOptions.pagination)}
         {navigationButton(swipeOptions.prevButton, swipeOptions.nextButton)}
