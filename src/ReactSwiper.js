@@ -31,26 +31,6 @@ class ReactSwiper extends React.Component {
   componentDidMount() {
     const { swipeOptions } = this.props;
     this.swipe = new Swiper(this.refs.container, swipeOptions);
-    this.activeIndex = this.swipe.activeIndex;
-    this.previousIndex = this.swipe.previousIndex;
-    this.width = this.swipe.width;
-    this.height = this.swipe.height;
-    this.touches = this.swipe.touches;
-    this.params = this.swipe.params;
-    this.container = this.swipe.container;
-    this.wrapper = this.swipe.wrapper;
-    this.slides = this.swipe.slides;
-    this.bullets = this.swipe.bullets;
-    this.translate = this.swipe.translate;
-    this.progress = this.swipe.progress;
-    this.isBeginning = this.swipe.isBeginning;
-    this.isEnd = this.swipe.isEnd;
-    this.autoplaying = this.swipe.autoplaying;
-    this.animating = this.swipe.animating;
-    this.clickedIndex = this.swipe.clickedIndex;
-    this.clickedSlide = this.swipe.clickedSlide;
-    this.prevButton = this.swipe.prevButton;
-    this.nextButton = this.swipe.nextButton;
   }
   componentWillUnmount() {
     this.swipe.destroy(true, true);
@@ -60,7 +40,7 @@ class ReactSwiper extends React.Component {
     this.swipe.onResize();
   }
   getWrapperTranslate(axis = 'x') {
-    this.swipe.getWrapperTranslate(axis);
+    return this.swipe.getWrapperTranslate(axis);
   }
   setWrapperTranslate(translate) {
     this.swipe.setWrapperTranslate(translate);
@@ -130,6 +110,66 @@ class ReactSwiper extends React.Component {
   }
   lockSwipeToPrev() {
     this.swipe.lockSwipeToPrev();
+  }
+  width() {
+    return this.swipe.width;
+  }
+  activeIndex() {
+    return this.swipe.activeIndex;
+  }
+  previousIndex() {
+    return this.swipe.previousIndex;
+  }
+  height() {
+    return this.swipe.height;
+  }
+  touches() {
+    return this.swipe.touches;
+  }
+  params() {
+    return this.swipe.params;
+  }
+  container() {
+    return this.swipe.container;
+  }
+  wrapper() {
+    return this.swipe.wrapper;
+  }
+  slides() {
+    return this.swipe.slides;
+  }
+  bullets() {
+    return this.swipe.bullets;
+  }
+  translate() {
+    return this.swipe.translate;
+  }
+  progress() {
+    return this.swipe.progress;
+  }
+  isBeginning() {
+    return this.swipe.isBeginning;
+  }
+  autoplaying() {
+    return this.swipe.autoplaying;
+  }
+  animating() {
+    return this.swipe.animating;
+  }
+  clickedIndex() {
+    return this.swipe.clickedIndex;
+  }
+  clickedSlide() {
+    return this.swipe.clickedSlide;
+  }
+  prevButton() {
+    return this.swipe.prevButton;
+  }
+  nextButton() {
+    return this.swipe.nextButton;
+  }
+  isEnd() {
+    return this.swipe.isEnd;
   }
   render() {
     const { children, swipeOptions, style, className } = this.props;

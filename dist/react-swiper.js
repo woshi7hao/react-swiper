@@ -119,26 +119,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var swipeOptions = this.props.swipeOptions;
 
 	      this.swipe = new _swiper2.default(this.refs.container, swipeOptions);
-	      this.activeIndex = this.swipe.activeIndex;
-	      this.previousIndex = this.swipe.previousIndex;
-	      this.width = this.swipe.width;
-	      this.height = this.swipe.height;
-	      this.touches = this.swipe.touches;
-	      this.params = this.swipe.params;
-	      this.container = this.swipe.container;
-	      this.wrapper = this.swipe.wrapper;
-	      this.slides = this.swipe.slides;
-	      this.bullets = this.swipe.bullets;
-	      this.translate = this.swipe.translate;
-	      this.progress = this.swipe.progress;
-	      this.isBeginning = this.swipe.isBeginning;
-	      this.isEnd = this.swipe.isEnd;
-	      this.autoplaying = this.swipe.autoplaying;
-	      this.animating = this.swipe.animating;
-	      this.clickedIndex = this.swipe.clickedIndex;
-	      this.clickedSlide = this.swipe.clickedSlide;
-	      this.prevButton = this.swipe.prevButton;
-	      this.nextButton = this.swipe.nextButton;
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
@@ -156,7 +136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function getWrapperTranslate() {
 	      var axis = arguments.length <= 0 || arguments[0] === undefined ? 'x' : arguments[0];
 
-	      this.swipe.getWrapperTranslate(axis);
+	      return this.swipe.getWrapperTranslate(axis);
 	    }
 	  }, {
 	    key: 'setWrapperTranslate',
@@ -286,6 +266,106 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'lockSwipeToPrev',
 	    value: function lockSwipeToPrev() {
 	      this.swipe.lockSwipeToPrev();
+	    }
+	  }, {
+	    key: 'width',
+	    value: function width() {
+	      return this.swipe.width;
+	    }
+	  }, {
+	    key: 'activeIndex',
+	    value: function activeIndex() {
+	      return this.swipe.activeIndex;
+	    }
+	  }, {
+	    key: 'previousIndex',
+	    value: function previousIndex() {
+	      return this.swipe.previousIndex;
+	    }
+	  }, {
+	    key: 'height',
+	    value: function height() {
+	      return this.swipe.height;
+	    }
+	  }, {
+	    key: 'touches',
+	    value: function touches() {
+	      return this.swipe.touches;
+	    }
+	  }, {
+	    key: 'params',
+	    value: function params() {
+	      return this.swipe.params;
+	    }
+	  }, {
+	    key: 'container',
+	    value: function container() {
+	      return this.swipe.container;
+	    }
+	  }, {
+	    key: 'wrapper',
+	    value: function wrapper() {
+	      return this.swipe.wrapper;
+	    }
+	  }, {
+	    key: 'slides',
+	    value: function slides() {
+	      return this.swipe.slides;
+	    }
+	  }, {
+	    key: 'bullets',
+	    value: function bullets() {
+	      return this.swipe.bullets;
+	    }
+	  }, {
+	    key: 'translate',
+	    value: function translate() {
+	      return this.swipe.translate;
+	    }
+	  }, {
+	    key: 'progress',
+	    value: function progress() {
+	      return this.swipe.progress;
+	    }
+	  }, {
+	    key: 'isBeginning',
+	    value: function isBeginning() {
+	      return this.swipe.isBeginning;
+	    }
+	  }, {
+	    key: 'autoplaying',
+	    value: function autoplaying() {
+	      return this.swipe.autoplaying;
+	    }
+	  }, {
+	    key: 'animating',
+	    value: function animating() {
+	      return this.swipe.animating;
+	    }
+	  }, {
+	    key: 'clickedIndex',
+	    value: function clickedIndex() {
+	      return this.swipe.clickedIndex;
+	    }
+	  }, {
+	    key: 'clickedSlide',
+	    value: function clickedSlide() {
+	      return this.swipe.clickedSlide;
+	    }
+	  }, {
+	    key: 'prevButton',
+	    value: function prevButton() {
+	      return this.swipe.prevButton;
+	    }
+	  }, {
+	    key: 'nextButton',
+	    value: function nextButton() {
+	      return this.swipe.nextButton;
+	    }
+	  }, {
+	    key: 'isEnd',
+	    value: function isEnd() {
+	      return this.swipe.isEnd;
 	    }
 	  }, {
 	    key: 'render',
