@@ -73,11 +73,7 @@ or
 ### 说明
 
 swipeOptions可以传递[Swiper](https://github.com/nolimits4web/swiper/)的option
-
-一些暂未整合到react-swiper中的配置    
-1. observer(监视器)        
-2. controller(双向控制)    
-    
+ 
 ---
 
 **MIT Licensed**
