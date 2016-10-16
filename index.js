@@ -54,7 +54,7 @@ var ReactSwiper = function (_React$Component) {
   function ReactSwiper() {
     _classCallCheck(this, ReactSwiper);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(ReactSwiper).apply(this, arguments));
+    return _possibleConstructorReturn(this, (ReactSwiper.__proto__ || Object.getPrototypeOf(ReactSwiper)).apply(this, arguments));
   }
 
   _createClass(ReactSwiper, [{
@@ -62,7 +62,7 @@ var ReactSwiper = function (_React$Component) {
     value: function componentDidMount() {
       var swipeOptions = this.props.swipeOptions;
 
-      this.swipe = new _swiper2.default(this.refs.container, swipeOptions);
+      this.swipe = new _swiper2.default(this.container, swipeOptions);
     }
   }, {
     key: 'componentWillUnmount',
@@ -78,7 +78,7 @@ var ReactSwiper = function (_React$Component) {
   }, {
     key: 'getWrapperTranslate',
     value: function getWrapperTranslate() {
-      var axis = arguments.length <= 0 || arguments[0] === undefined ? 'x' : arguments[0];
+      var axis = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'x';
 
       return this.swipe.getWrapperTranslate(axis);
     }
@@ -110,8 +110,8 @@ var ReactSwiper = function (_React$Component) {
   }, {
     key: 'slideTo',
     value: function slideTo(index) {
-      var speed = arguments.length <= 1 || arguments[1] === undefined ? 1000 : arguments[1];
-      var runCallbacks = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
+      var speed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
+      var runCallbacks = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
       this.swipe.slideTo(index, speed, runCallbacks);
     }
@@ -128,24 +128,24 @@ var ReactSwiper = function (_React$Component) {
   }, {
     key: 'destroy',
     value: function destroy() {
-      var deleteInstance = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
-      var cleanupStyles = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
+      var deleteInstance = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+      var cleanupStyles = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
       this.swipe.destroy(deleteInstance, cleanupStyles);
     }
   }, {
     key: 'prev',
     value: function prev() {
-      var runCallbacks = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
-      var speed = arguments.length <= 1 || arguments[1] === undefined ? 1000 : arguments[1];
+      var runCallbacks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      var speed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
 
       this.swipe.slidePrev(runCallbacks, speed);
     }
   }, {
     key: 'next',
     value: function next() {
-      var runCallbacks = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
-      var speed = arguments.length <= 1 || arguments[1] === undefined ? 1000 : arguments[1];
+      var runCallbacks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      var speed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
 
       this.swipe.slideNext(runCallbacks, speed);
     }
@@ -187,7 +187,7 @@ var ReactSwiper = function (_React$Component) {
   }, {
     key: 'update',
     value: function update() {
-      var updateTranslate = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
+      var updateTranslate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
       this.swipe.update(updateTranslate);
     }
@@ -314,6 +314,8 @@ var ReactSwiper = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var _props = this.props;
       var children = _props.children;
       var swipeOptions = _props.swipeOptions;
@@ -324,7 +326,9 @@ var ReactSwiper = function (_React$Component) {
       var containerClassName = className ? className + ' swiper-container' : 'swiper-container';
       return _react2.default.createElement(
         'div',
-        { className: containerClassName, style: containerStyle, ref: 'container' },
+        { className: containerClassName, style: containerStyle, ref: function ref(el) {
+            _this2.container = el;
+          } },
         _react2.default.createElement(
           'div',
           { className: 'swiper-wrapper' },

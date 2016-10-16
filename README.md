@@ -1,8 +1,11 @@
 > [nolimits4web](https://github.com/nolimits4web)'s [Swiper](https://github.com/nolimits4web/swiper/) as a react component
 
+## 修复react 15.0.2版本以后ref报错问题
+使用请下载引用dist里的react-swiper.js或react-swiper.min.js
+
 ### Install
 
-  npm install swiper react-swiper-dy --save
+  npm install swiper --save
 
 ### Demo
 
@@ -11,10 +14,11 @@ demo的源码在demo文件夹
 
 ### Usage
 #### Example
+```javascript
     import React, { Component } from 'react';
     import ReactDOM from 'react-dom';
     import 'swiper/dist/css/swiper.css';
-    import ReactSwiper from 'react-swiper-dy';
+    import ReactSwiper from './ReactSwiper';
     
     class Page extends Component {
       constructor(props) {
@@ -23,10 +27,10 @@ demo的源码在demo文件夹
         this.next = this.next.bind(this);
       }
       next() {
-        this.refs.reactSwiper.next();
+        this.reactSwiper.next();
       }
       prev() {
-        this.refs.reactSwiper.prev();
+        this.reactSwiper.prev();
       }
       render() {
         const style = {
@@ -36,7 +40,7 @@ demo的源码在demo文件夹
         return (
           <div>
             {/* style or className is allow */}
-            <ReactSwiper ref="reactSwiper" swipeOptions={{}}>
+            <ReactSwiper ref={(el) => this.reactSwiper=el} swipeOptions={{}}>
               <div style={style}>page one</div>
               <div style={style}>page two</div>
               <div style={style}>page three</div>
@@ -54,7 +58,7 @@ demo的源码在demo文件夹
       <Page />,
       document.getElementById('app')
     );
-
+```
 ### 注意
 
 需要自行引入swiper依赖的css文件    

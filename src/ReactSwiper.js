@@ -30,7 +30,7 @@ function scrollBar(argBar) {
 class ReactSwiper extends React.Component {
   componentDidMount() {
     const { swipeOptions } = this.props;
-    this.swipe = new Swiper(this.refs.container, swipeOptions);
+    this.swipe = new Swiper(this.container, swipeOptions);
   }
   componentWillUnmount() {
     this.swipe.destroy(true, true);
@@ -177,7 +177,7 @@ class ReactSwiper extends React.Component {
     const containerClassName =
       className ? `${className} swiper-container` : 'swiper-container';
     return (
-      <div className={containerClassName} style={containerStyle} ref="container">
+      <div className={containerClassName} style={containerStyle} ref={(el) => {this.container = el;}}>
         <div className="swiper-wrapper">
           {
             React.Children.map(children, child => {

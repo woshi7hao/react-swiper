@@ -110,7 +110,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function ReactSwiper() {
 	    _classCallCheck(this, ReactSwiper);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ReactSwiper).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (ReactSwiper.__proto__ || Object.getPrototypeOf(ReactSwiper)).apply(this, arguments));
 	  }
 
 	  _createClass(ReactSwiper, [{
@@ -118,7 +118,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function componentDidMount() {
 	      var swipeOptions = this.props.swipeOptions;
 
-	      this.swipe = new _swiper2.default(this.refs.container, swipeOptions);
+	      this.swipe = new _swiper2.default(this.container, swipeOptions);
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
@@ -134,7 +134,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'getWrapperTranslate',
 	    value: function getWrapperTranslate() {
-	      var axis = arguments.length <= 0 || arguments[0] === undefined ? 'x' : arguments[0];
+	      var axis = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'x';
 
 	      return this.swipe.getWrapperTranslate(axis);
 	    }
@@ -166,8 +166,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'slideTo',
 	    value: function slideTo(index) {
-	      var speed = arguments.length <= 1 || arguments[1] === undefined ? 1000 : arguments[1];
-	      var runCallbacks = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
+	      var speed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
+	      var runCallbacks = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
 	      this.swipe.slideTo(index, speed, runCallbacks);
 	    }
@@ -184,24 +184,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'destroy',
 	    value: function destroy() {
-	      var deleteInstance = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
-	      var cleanupStyles = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
+	      var deleteInstance = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+	      var cleanupStyles = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
 	      this.swipe.destroy(deleteInstance, cleanupStyles);
 	    }
 	  }, {
 	    key: 'prev',
 	    value: function prev() {
-	      var runCallbacks = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
-	      var speed = arguments.length <= 1 || arguments[1] === undefined ? 1000 : arguments[1];
+	      var runCallbacks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+	      var speed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
 
 	      this.swipe.slidePrev(runCallbacks, speed);
 	    }
 	  }, {
 	    key: 'next',
 	    value: function next() {
-	      var runCallbacks = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
-	      var speed = arguments.length <= 1 || arguments[1] === undefined ? 1000 : arguments[1];
+	      var runCallbacks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+	      var speed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
 
 	      this.swipe.slideNext(runCallbacks, speed);
 	    }
@@ -243,7 +243,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'update',
 	    value: function update() {
-	      var updateTranslate = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
+	      var updateTranslate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
 	      this.swipe.update(updateTranslate);
 	    }
@@ -370,6 +370,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      var _props = this.props;
 	      var children = _props.children;
 	      var swipeOptions = _props.swipeOptions;
@@ -380,7 +382,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var containerClassName = className ? className + ' swiper-container' : 'swiper-container';
 	      return _react2.default.createElement(
 	        'div',
-	        { className: containerClassName, style: containerStyle, ref: 'container' },
+	        { className: containerClassName, style: containerStyle, ref: function ref(el) {
+	            _this2.container = el;
+	          } },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'swiper-wrapper' },
@@ -417,14 +421,103 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// shim for using process in browser
-
 	var process = module.exports = {};
+
+	// cached from whatever global is present so that test runners that stub it
+	// don't break things.  But we need to wrap it in a try catch in case it is
+	// wrapped in strict mode code which doesn't define any globals.  It's inside a
+	// function because try/catches deoptimize in certain engines.
+
+	var cachedSetTimeout;
+	var cachedClearTimeout;
+
+	function defaultSetTimout() {
+	    throw new Error('setTimeout has not been defined');
+	}
+	function defaultClearTimeout () {
+	    throw new Error('clearTimeout has not been defined');
+	}
+	(function () {
+	    try {
+	        if (typeof setTimeout === 'function') {
+	            cachedSetTimeout = setTimeout;
+	        } else {
+	            cachedSetTimeout = defaultSetTimout;
+	        }
+	    } catch (e) {
+	        cachedSetTimeout = defaultSetTimout;
+	    }
+	    try {
+	        if (typeof clearTimeout === 'function') {
+	            cachedClearTimeout = clearTimeout;
+	        } else {
+	            cachedClearTimeout = defaultClearTimeout;
+	        }
+	    } catch (e) {
+	        cachedClearTimeout = defaultClearTimeout;
+	    }
+	} ())
+	function runTimeout(fun) {
+	    if (cachedSetTimeout === setTimeout) {
+	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    // if setTimeout wasn't available but was latter defined
+	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+	        cachedSetTimeout = setTimeout;
+	        return setTimeout(fun, 0);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedSetTimeout(fun, 0);
+	    } catch(e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+	            return cachedSetTimeout.call(null, fun, 0);
+	        } catch(e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+	            return cachedSetTimeout.call(this, fun, 0);
+	        }
+	    }
+
+
+	}
+	function runClearTimeout(marker) {
+	    if (cachedClearTimeout === clearTimeout) {
+	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    // if clearTimeout wasn't available but was latter defined
+	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+	        cachedClearTimeout = clearTimeout;
+	        return clearTimeout(marker);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedClearTimeout(marker);
+	    } catch (e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+	            return cachedClearTimeout.call(null, marker);
+	        } catch (e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+	            return cachedClearTimeout.call(this, marker);
+	        }
+	    }
+
+
+
+	}
 	var queue = [];
 	var draining = false;
 	var currentQueue;
 	var queueIndex = -1;
 
 	function cleanUpNextTick() {
+	    if (!draining || !currentQueue) {
+	        return;
+	    }
 	    draining = false;
 	    if (currentQueue.length) {
 	        queue = currentQueue.concat(queue);
@@ -440,7 +533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (draining) {
 	        return;
 	    }
-	    var timeout = setTimeout(cleanUpNextTick);
+	    var timeout = runTimeout(cleanUpNextTick);
 	    draining = true;
 
 	    var len = queue.length;
@@ -457,7 +550,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    currentQueue = null;
 	    draining = false;
-	    clearTimeout(timeout);
+	    runClearTimeout(timeout);
 	}
 
 	process.nextTick = function (fun) {
@@ -469,7 +562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    queue.push(new Item(fun, args));
 	    if (queue.length === 1 && !draining) {
-	        setTimeout(drainQueue, 0);
+	        runTimeout(drainQueue);
 	    }
 	};
 
